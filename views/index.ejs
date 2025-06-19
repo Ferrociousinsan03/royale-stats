@@ -24,6 +24,16 @@
       <p>Best Trophies: <%= player.bestTrophies %></p>
       <p>Clan: <%= player.clan?.name || 'No Clan' %></p>
     </div>
+<% if (cardLevels) { %>
+  <div class="card">
+    <h3>Card Level Stats</h3>
+    <ul style="list-style: none; padding: 0;">
+      <% Object.keys(cardLevels).sort((a, b) => b - a).forEach(level => { %>
+        <li>Level <%= level %>: <%= cardLevels[level] %> cards</li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
   <% } %>
 </body>
 </html>
