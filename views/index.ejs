@@ -24,6 +24,23 @@
       <p>Best Trophies: <%= player.bestTrophies %></p>
       <p>Clan: <%= player.clan?.name || 'No Clan' %></p>
     </div>
+<% if (player.cards) { %>
+  <div class="card">
+    <h3>All Cards</h3>
+    <div class="cards-container">
+      <% player.cards.forEach(card => { 
+        const cardImage = `https://royaleapi.github.io/cr-api-assets/cards/${card.name.toLowerCase().replace(/ /g, '-').replace(/\./g, '').replace(/'/g, '')}.png`;
+      %>
+        <div class="card-item">
+          <img src="<%= cardImage %>" alt="<%= card.name %>" />
+          <p><strong><%= card.name %></strong></p>
+          <p>Level: <%= card.level %></p>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+<% } %>
+
 <% if (cardLevels) { %>
   <div class="card">
     <h3>Card Level Stats</h3>
