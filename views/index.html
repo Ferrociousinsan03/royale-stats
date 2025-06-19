@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clash Royale Stats</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Clash Royale Player Stats</h1>
+  <form action="/player" method="get">
+    <input type="text" name="tag" placeholder="Enter Player Tag (e.g., #ABC123)" required>
+    <button type="submit">Search</button>
+  </form>
+
+  <% if (error) { %>
+    <p class="error"><%= error %></p>
+  <% } %>
+
+  <% if (player) { %>
+    <div class="card">
+      <h2><%= player.name %> (Level <%= player.expLevel %>)</h2>
+      <p>Trophies: <%= player.trophies %></p>
+      <p>Arena: <%= player.arena.name %></p>
+      <p>Wins: <%= player.wins %>, Losses: <%= player.losses %></p>
+      <p>Best Trophies: <%= player.bestTrophies %></p>
+      <p>Clan: <%= player.clan?.name || 'No Clan' %></p>
+    </div>
+  <% } %>
+</body>
+</html>
